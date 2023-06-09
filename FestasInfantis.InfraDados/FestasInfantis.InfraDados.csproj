@@ -10,4 +10,10 @@
     <ProjectReference Include="..\FestasInfantis.Dominio\FestasInfantis.Dominio.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ModuloCompartilhado\dados.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

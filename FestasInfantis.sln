@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dominio", "Dominio", "{1CC6
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InfraDados", "InfraDados", "{7DCA6992-2C06-4EC4-9FF8-14B27E2C7E41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FestasInfantis.WinApp", "FestasInfantis.WinApp\FestasInfantis.WinApp.csproj", "{D160F2D3-BC7D-4423-998D-5EA626E4D0A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FestasInfantis.WinApp", "FestasInfantis.WinApp\FestasInfantis.WinApp.csproj", "{D160F2D3-BC7D-4423-998D-5EA626E4D0A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FestasInfantis.Dominio", "FestasInfantis.Dominio\FestasInfantis.Dominio.csproj", "{7DEB2D04-4B23-4EFB-9426-69C20E827CCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FestasInfantis.Dominio", "FestasInfantis.Dominio\FestasInfantis.Dominio.csproj", "{7DEB2D04-4B23-4EFB-9426-69C20E827CCB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FestasInfantis.InfraDados", "FestasInfantis.InfraDados\FestasInfantis.InfraDados.csproj", "{D2E00B7F-AF06-4552-9413-AAC5E2FD9D40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FestasInfantis.InfraDados", "FestasInfantis.InfraDados\FestasInfantis.InfraDados.csproj", "{D2E00B7F-AF06-4552-9413-AAC5E2FD9D40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
