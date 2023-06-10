@@ -2,8 +2,6 @@
 
 namespace FestasInfantis.Dominio.ModuloCliente;
 
-[Serializable]
-
 public class Cliente : EntidadeBase<Cliente>
 {
     public string Nome { get; set; }
