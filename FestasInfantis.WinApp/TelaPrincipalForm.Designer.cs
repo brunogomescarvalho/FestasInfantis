@@ -31,10 +31,13 @@
             menuStrip1 = new MenuStrip();
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             clientesMenu = new ToolStripMenuItem();
+            TematicasToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
             btnExcluir = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
+            btnItemTema = new ToolStripButton();
             toolStripSeparator1 = new ToolStripSeparator();
             labelMenu = new ToolStripLabel();
             statusStrip1 = new StatusStrip();
@@ -58,12 +61,12 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenu });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenu, TematicasToolStripMenuItem });
             cadastrosToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cadastrosToolStripMenuItem.Image = Properties.Resources.menu_FILL0_wght200_GRAD0_opsz40;
             cadastrosToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            cadastrosToolStripMenuItem.Size = new Size(139, 44);
+            cadastrosToolStripMenuItem.Size = new Size(122, 44);
             cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // clientesMenu
@@ -71,14 +74,23 @@
             clientesMenu.Image = Properties.Resources.person_add_FILL0_wght200_GRAD0_opsz40;
             clientesMenu.ImageScaling = ToolStripItemImageScaling.None;
             clientesMenu.Name = "clientesMenu";
-            clientesMenu.Size = new Size(174, 46);
+            clientesMenu.Size = new Size(150, 46);
             clientesMenu.Text = "Clientes";
             clientesMenu.Click += ClientesMenu_Click;
+            // 
+            // TematicasToolStripMenuItem
+            // 
+            TematicasToolStripMenuItem.Image = Properties.Resources.domino_mask_FILL0_wght200_GRAD0_opsz40;
+            TematicasToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            TematicasToolStripMenuItem.Name = "TematicasToolStripMenuItem";
+            TematicasToolStripMenuItem.Size = new Size(150, 46);
+            TematicasToolStripMenuItem.Text = "Temas";
+            TematicasToolStripMenuItem.Click += TematicasToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
             toolStrip1.ImageScalingSize = new Size(20, 20);
-            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator1, labelMenu });
+            toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator2, btnItemTema, toolStripSeparator1, labelMenu });
             toolStrip1.Location = new Point(0, 48);
             toolStrip1.Name = "toolStrip1";
             toolStrip1.Size = new Size(900, 47);
@@ -118,6 +130,22 @@
             btnExcluir.Size = new Size(44, 44);
             btnExcluir.Click += BtnExcluir_Click;
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(6, 47);
+            // 
+            // btnItemTema
+            // 
+            btnItemTema.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnItemTema.Enabled = false;
+            btnItemTema.Image = Properties.Resources.library_add_FILL0_wght200_GRAD0_opsz40;
+            btnItemTema.ImageScaling = ToolStripItemImageScaling.None;
+            btnItemTema.ImageTransparentColor = Color.Magenta;
+            btnItemTema.Name = "btnItemTema";
+            btnItemTema.Size = new Size(44, 44);
+            btnItemTema.Click += btnItemTema_Click;
+            // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
@@ -127,24 +155,24 @@
             // 
             labelMenu.ImageAlign = ContentAlignment.TopCenter;
             labelMenu.Name = "labelMenu";
-            labelMenu.Size = new Size(102, 44);
+            labelMenu.Size = new Size(80, 44);
             labelMenu.Text = "Tipo Cadastro";
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { labelRodape });
-            statusStrip1.Location = new Point(0, 492);
+            statusStrip1.Location = new Point(0, 496);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Padding = new Padding(1, 0, 16, 0);
-            statusStrip1.Size = new Size(900, 26);
+            statusStrip1.Size = new Size(900, 22);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
             // labelRodape
             // 
             labelRodape.Name = "labelRodape";
-            labelRodape.Size = new Size(88, 20);
+            labelRodape.Size = new Size(70, 17);
             labelRodape.Text = "Bem-Vindo!";
             // 
             // panelTelaPrincipal
@@ -152,12 +180,12 @@
             panelTelaPrincipal.Dock = DockStyle.Fill;
             panelTelaPrincipal.Location = new Point(0, 95);
             panelTelaPrincipal.Name = "panelTelaPrincipal";
-            panelTelaPrincipal.Size = new Size(900, 397);
+            panelTelaPrincipal.Size = new Size(900, 401);
             panelTelaPrincipal.TabIndex = 4;
             // 
             // TelaPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 23F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 518);
             Controls.Add(panelTelaPrincipal);
@@ -194,5 +222,8 @@
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel labelRodape;
         private Panel panelTelaPrincipal;
+        private ToolStripMenuItem TematicasToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripButton btnItemTema;
     }
 }

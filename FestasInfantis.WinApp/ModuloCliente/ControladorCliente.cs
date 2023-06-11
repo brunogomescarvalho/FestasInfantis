@@ -31,7 +31,7 @@ namespace FestasInfantis.WinApp.ModuloCliente
         {
             TelaPrincipalForm.TelaPrincipal?.AlterarLabelMenu("Cadastro Clientes");
 
-            Configuracao ??= new Configuracao("Inserir Cliente", "Editar Cliente", "Excluír Cliente");
+            Configuracao ??= new Configuracao("Inserir Cliente", "Editar Cliente", "Excluir Cliente");
 
         }
 

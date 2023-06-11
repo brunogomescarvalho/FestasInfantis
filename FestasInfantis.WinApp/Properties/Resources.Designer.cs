@@ -83,9 +83,49 @@ namespace FestasInfantis.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap domino_mask_FILL0_wght200_GRAD0_opsz40 {
+            get {
+                object obj = ResourceManager.GetObject("domino_mask_FILL0_wght200_GRAD0_opsz40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap domino_mask_FILL0_wght200_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("domino_mask_FILL0_wght200_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap domino_mask_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("domino_mask_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit_FILL0_wght200_GRAD0_opsz40 {
             get {
                 object obj = ResourceManager.GetObject("edit_FILL0_wght200_GRAD0_opsz40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap library_add_FILL0_wght200_GRAD0_opsz40 {
+            get {
+                object obj = ResourceManager.GetObject("library_add_FILL0_wght200_GRAD0_opsz40", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,6 +146,26 @@ namespace FestasInfantis.WinApp.Properties {
         internal static System.Drawing.Bitmap person_add_FILL0_wght200_GRAD0_opsz40 {
             get {
                 object obj = ResourceManager.GetObject("person_add_FILL0_wght200_GRAD0_opsz40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playing_cards_FILL0_wght200_GRAD0_opsz40 {
+            get {
+                object obj = ResourceManager.GetObject("playing_cards_FILL0_wght200_GRAD0_opsz40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap temas {
+            get {
+                object obj = ResourceManager.GetObject("temas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

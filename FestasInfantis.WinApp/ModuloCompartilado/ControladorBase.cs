@@ -18,6 +18,10 @@
 
         public Configuracao Configuracao = null!;
 
+        public virtual void AdicionarItemTema()
+        {
+        }
+
 
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FestasInfantis.Dominio.ModuloCliente;
+using FestasInfantis.Dominio.ModuloTema;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -9,11 +10,13 @@ namespace FestasInfantis.InfraDados.ModuloCompartilhado
         private const string NOME_ARQUIVO = @"ModuloCompartilhado\dados.json";
 
         public List<Cliente> Clientes { get; set; }
-
-
+        public List<Tema> Temas { get; set; }
+        
+        
         public ContextoDados()
         {
             Clientes = new List<Cliente>();
+            Temas = new List<Tema>();
         }
 
 
@@ -36,6 +39,7 @@ namespace FestasInfantis.InfraDados.ModuloCompartilhado
                 ContextoDados contexto = JsonSerializer.Deserialize<ContextoDados>(arquivoJson, jsonSerializerOptions)!;
 
                 Clientes = contexto.Clientes;
+                Temas = contexto.Temas;
             }
         }
 

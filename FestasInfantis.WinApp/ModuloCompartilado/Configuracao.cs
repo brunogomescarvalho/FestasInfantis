@@ -7,6 +7,7 @@ namespace FestasInfantis.WinApp.ModuloCompartilado
         public string ToolTipInserir { get; private set; }
         public string ToolTipEditar { get; private set; }
         public string ToolTipExcluir { get; private set; }
+        public string ToolTipAdicionarItem { get; set; }
 
         #endregion
 
@@ -15,6 +16,7 @@ namespace FestasInfantis.WinApp.ModuloCompartilado
         public bool BtnAdicionarEnabled { get; set; }
         public bool BtnEditarEnabled { get; set; }
         public bool BtnExcluirEnabled { get; set; }
+        public bool BtnItemTemaEnabled { get; set; } = false;
 
         #endregion
 

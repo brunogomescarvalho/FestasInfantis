@@ -6,6 +6,7 @@ public class RepositorioCliente : RepositorioBase<Cliente>, IRepositorioCliente
 {
     public RepositorioCliente(ContextoDados contexto) : base(contexto)
     {
+
     }
 
     protected override List<Cliente>? ObterDados()
