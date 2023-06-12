@@ -21,11 +21,11 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         private void CarregarTemas(Tema temaSelecionado)
         {
-            txtTema.Text = temaSelecionado.nome;
+            txtTema.Text = temaSelecionado.Nome;
 
             listBoxItensTema.Items.Clear();
 
-            List<ItemTema> itemTemas = temaSelecionado.itens.ToList();
+            List<ItemTema> itemTemas = temaSelecionado.Itens.ToList();
 
             foreach (ItemTema itemTema in itemTemas)
             {
@@ -65,7 +65,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         public void CarregarListaItens(Tema temaSelecionado)
         {
-            foreach (ItemTema item in temaSelecionado.itens)
+            foreach (ItemTema item in temaSelecionado.Itens)
             {
                 listaItemTema.Add(item);
                 listaReserva.Add(item);

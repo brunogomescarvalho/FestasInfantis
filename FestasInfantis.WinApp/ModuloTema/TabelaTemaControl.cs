@@ -1,14 +1,5 @@
-﻿using FestasInfantis.Dominio.ModuloCliente;
+﻿
 using FestasInfantis.Dominio.ModuloTema;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -31,7 +22,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             temas.ForEach(i =>
             {
-                gridTema.Rows.Add(i.Id, i.nome, String.Join(",", i.itens), $"RS{i.total}");
+                gridTema.Rows.Add(i.Id, i.Nome, String.Join(",", i.Itens), $"RS{i.Total}");
             });
         }
 

@@ -43,12 +43,11 @@ namespace FestasInfantis.WinApp.ModuloCliente
 
             Cliente clienteSelecionado = repositorioCliente.ObterPorId(id);
 
-            TelaClienteForm telaCliente = new()
+            TelaClienteForm telaCliente = new() 
             {
-                Text = "Editar Cliente"
+                Text = "Editar Cliente",
+                Cliente = clienteSelecionado,
             };
-
-            telaCliente.Cliente = clienteSelecionado;
 
             DialogResult dialog = telaCliente.ShowDialog();
 

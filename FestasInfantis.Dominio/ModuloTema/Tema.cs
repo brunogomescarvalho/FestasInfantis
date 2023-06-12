@@ -3,36 +3,36 @@ namespace FestasInfantis.Dominio.ModuloTema
 {
     public class Tema : EntidadeBase<Tema>
     {
-        public string nome { get; set; }
-        public List<ItemTema> itens { get; set; }
-        public decimal? total { get; set; }
+        public string Nome { get; set; }
+        public List<ItemTema> Itens { get; set; }
+        public decimal Total { get; set; }
 
         public Tema(string tema)
         {
-            this.nome = tema;
-            this.itens = new List<ItemTema>();
-            this.total = 0;
+            this.Nome = tema;
+            this.Itens = new List<ItemTema>();
+            this.Total = 0;
         }
         public Tema()
         {
         }
         public override void Editar(Tema temaAtualizado)
         {
-            this.nome = temaAtualizado.nome;
-            this.itens = temaAtualizado.itens;
-            this.total = temaAtualizado.total;
+            this.Nome = temaAtualizado.Nome;
+            this.Itens = temaAtualizado.Itens;
+            this.Total = temaAtualizado.Total;
         }
 
         public override string[] Validar()
         {
             List<string> erros = new List<string>();
 
-            if (nome.Trim() == string.Empty)
+            if (Nome.Trim() == string.Empty)
             {
                 erros.Add("Por gentileza, informe o nome do tema!");
             }
 
-            foreach (ItemTema item in  itens)
+            foreach (ItemTema item in  Itens)
             {
                 if(item.nome.Trim() == string.Empty)
                 {
@@ -50,21 +50,21 @@ namespace FestasInfantis.Dominio.ModuloTema
         }
         public override string ToString()
         {
-            return $"{nome}";
+            return $"{Nome}";
         }
 
         public void AdicionarItemNoTema(ItemTema item)
         {
-            itens.Add(item);
+            Itens.Add(item);
         }
 
         public void CalcularValorTotal()
         {
-            this.total = 0;
+            this.Total = 0;
 
-            foreach (ItemTema item in itens)
+            foreach (ItemTema item in Itens)
             {
-                this.total += item.valor;
+                this.Total += item.valor;
             } 
         }
     }

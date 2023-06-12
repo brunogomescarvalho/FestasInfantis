@@ -19,7 +19,7 @@ namespace FestasInfantis.InfraDados.ModuloTema
 
         public override bool Cadastrar(Tema tema)
         {
-            if (ObterDados()!.Any(i => i.nome == tema.nome))
+            if (ObterDados()!.Any(i => i.Nome == tema.Nome))
             {
                 return false;
             }
@@ -28,7 +28,7 @@ namespace FestasInfantis.InfraDados.ModuloTema
 
         public override bool Editar(Tema tema)
         {
-            if (ObterDados()!.Any(i => i.nome == tema.nome && i.Id != tema.Id))
+            if (ObterDados()!.Any(i => i.Nome == tema.Nome && i.Id != tema.Id))
             {
                 return false;
             }

@@ -144,15 +144,15 @@
         #endregion
 
         private GroupBox groupBox1;
-        private TextBox txtCpf;
-        private TextBox txtEmail;
+        // private TextBox txtCpf;
+        // private TextBox txtEmail;
         private Label label1;
-        private TextBox txtTelefone;
+        //private TextBox txtTelefone;
         private TextBox txtTema;
         private TextBox txtId;
-        private Label labelEmail;
-        private Label labelTelefone;
-        private Label labelCpf;
+        // private Label labelEmail;
+        //private Label labelTelefone;
+        //private Label labelCpf;
         private Label labelNome;
         private Button btnCancelar;
         private Button btnSalvar;

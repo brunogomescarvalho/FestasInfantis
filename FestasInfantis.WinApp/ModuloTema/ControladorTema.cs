@@ -93,7 +93,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             Tema temaSelecionado = repositorioTema.ObterPorId(id);
 
-            DialogResult opcao = MessageBox.Show($"Confirma excluir o tema {temaSelecionado.nome}? ", "Excluir Tema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult opcao = MessageBox.Show($"Confirma excluir o tema {temaSelecionado.Nome}? ", "Excluir Tema", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
             if (opcao == DialogResult.OK)
             {
@@ -152,7 +152,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                temaSelecionado.itens.Clear();
+                temaSelecionado.Itens.Clear();
 
                 List<ItemTema> itens = telaItemForm.BuscarItem();
 

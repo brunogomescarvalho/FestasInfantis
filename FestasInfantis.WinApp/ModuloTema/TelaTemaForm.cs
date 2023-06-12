@@ -17,7 +17,7 @@ namespace FestasInfantis.WinApp.ModuloTema
             set
             {
                 txtId.Text = value.Id.ToString();
-                txtTema.Text = value.nome;
+                txtTema.Text = value.Nome;
             }
         }
         private void btnSalvar_Click(object sender, EventArgs e)
