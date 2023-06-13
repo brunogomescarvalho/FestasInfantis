@@ -5,7 +5,7 @@ namespace FestasInfantis.WinApp.ModuloTema
     public class ControladorTema : ControladorBase
     {
         private IRepositorioTema repositorioTema;
-        private TabelaTemaControl tabelaTemas;
+        private TabelaTemaControl? tabelaTemas;
 
         public ControladorTema(IRepositorioTema repositorioTema)
         {
@@ -31,7 +31,7 @@ namespace FestasInfantis.WinApp.ModuloTema
         {
             List<Tema> temas = repositorioTema.BuscarTodos();
 
-            tabelaTemas.AtualizarLista(temas);
+            tabelaTemas?.AtualizarLista(temas);
 
             TelaPrincipalForm.TelaPrincipal?.AlterarLabelRodape(ObterTextoRodape(temas));
         }
@@ -140,6 +140,7 @@ namespace FestasInfantis.WinApp.ModuloTema
             if (tabelaTemas == null)
             {
                 tabelaTemas = new TabelaTemaControl();
+
                 tabelaTemas.onEnviarId += MostrarDetalhes;
             }
 

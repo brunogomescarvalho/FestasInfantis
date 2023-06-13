@@ -52,8 +52,16 @@ namespace FestasInfantis.Dominio.ModuloAluguel
             this.ValorTotal = tema.ValorTotal;
             this.PorcentagemDeEntrada = porcentagem;
             this.Desconto = valorDesconto;
-            this.ValorEntrada = CalcularValorEntrada(this.ValorTotal, PorcentagemDeEntrada, this.Desconto);
-            this.Debito = this.ValorTotal - this.ValorEntrada;
+            this.ValorEntrada = CalcularValorEntrada(ValorTotal, PorcentagemDeEntrada, Desconto);
+            this.Debito = CalcularDebito(PorcentagemDeEntrada, ValorTotal, ValorEntrada, Desconto );
+        }
+
+        private decimal CalcularDebito(PorcentagemEntrada porcentagemDeEntrada, decimal valorTotal, decimal valorEntrada, PorcentagemDesconto desconto)
+        {
+            if (porcentagemDeEntrada == PorcentagemEntrada._100porcento)
+                return 0;
+
+            return valorTotal - valorEntrada - (int)desconto / 10;
         }
 
         private decimal CalcularValorEntrada(decimal valorTotal, PorcentagemEntrada porcentagemDeEntrada, PorcentagemDesconto valorDesconto)

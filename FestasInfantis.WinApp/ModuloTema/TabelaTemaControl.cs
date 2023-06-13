@@ -1,14 +1,15 @@
 ﻿
 using FestasInfantis.Dominio.ModuloTema;
 
-public delegate void OnEnviarIdSelecionado_EventHandler(int id);
-
 namespace FestasInfantis.WinApp.ModuloTema
 {
+    public delegate void OnEnviarIdSelecionado_EventHandler(int id);
+
     public partial class TabelaTemaControl : UserControl
     {
 
         public OnEnviarIdSelecionado_EventHandler onEnviarId = null!;
+
         public TabelaTemaControl()
         {
             InitializeComponent();
@@ -68,9 +69,9 @@ namespace FestasInfantis.WinApp.ModuloTema
 
         private void GridTema_ObterDetalhes(object sender, EventArgs e)
         {
-            int id =(int)gridTema.SelectedRows[0].Cells[0].Value;
+            int id = (int)gridTema.SelectedRows[0].Cells[0].Value;
 
-            onEnviarId(id);          
+            onEnviarId(id);
         }
     }
 }
