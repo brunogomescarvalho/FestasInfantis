@@ -1,10 +1,14 @@
 ﻿
 using FestasInfantis.Dominio.ModuloTema;
 
+public delegate void OnEnviarIdSelecionado_EventHandler(int id);
+
 namespace FestasInfantis.WinApp.ModuloTema
 {
     public partial class TabelaTemaControl : UserControl
     {
+
+        public OnEnviarIdSelecionado_EventHandler onEnviarId = null!;
         public TabelaTemaControl()
         {
             InitializeComponent();
@@ -14,6 +18,8 @@ namespace FestasInfantis.WinApp.ModuloTema
             gridTema.ConfigurarGridSomenteLeitura();
 
             gridTema.ConfigurarGridZebrado();
+
+            gridTema.MouseDoubleClick += GridTema_ObterDetalhes!;
         }
 
         public void AtualizarLista(List<Tema> temas)
@@ -58,6 +64,13 @@ namespace FestasInfantis.WinApp.ModuloTema
             };
 
             gridTema.Columns.AddRange(columns);
+        }
+
+        private void GridTema_ObterDetalhes(object sender, MouseEventArgs e)
+        {
+            int id =(int)gridTema.SelectedRows[0].Cells[0].Value;
+
+            onEnviarId(id);          
         }
     }
 }

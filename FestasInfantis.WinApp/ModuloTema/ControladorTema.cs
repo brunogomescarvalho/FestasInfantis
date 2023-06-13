@@ -1,11 +1,10 @@
 ﻿using FestasInfantis.Dominio.ModuloTema;
 
-
 namespace FestasInfantis.WinApp.ModuloTema
 {
     public class ControladorTema : ControladorBase
     {
-        IRepositorioTema repositorioTema;
+        private IRepositorioTema repositorioTema;
         private TabelaTemaControl tabelaTemas;
 
         public ControladorTema(IRepositorioTema repositorioTema)
@@ -15,6 +14,19 @@ namespace FestasInfantis.WinApp.ModuloTema
             ConfigurarTela();
 
         }
+
+        private void MostrarDetalhes(int id)
+        {
+            Tema tema = repositorioTema.ObterPorId(id);
+
+            var telaDetalhes = new TelaDetalhesTemaForm(tema)
+            {
+                Text = "Detalhes do Tema",
+                StartPosition = FormStartPosition.CenterScreen,
+            };
+            telaDetalhes.ShowDialog();
+        }
+
         public override void AtualizarListagem()
         {
             List<Tema> temas = repositorioTema.BuscarTodos();
@@ -39,7 +51,7 @@ namespace FestasInfantis.WinApp.ModuloTema
             TelaPrincipalForm.TelaPrincipal?.AlterarLabelMenu("Cadastro Temas");
 
             Configuracao ??= new Configuracao("Inserir Tema", "Editar Tema", "Excluir Tema");
-            
+
             Configuracao.BtnItemTemaEnabled = true;
 
             Configuracao.ToolTipAdicionarItem = "Adicionar Item ao Tema";
@@ -119,13 +131,17 @@ namespace FestasInfantis.WinApp.ModuloTema
                 {
                     AtualizarListagem();
                 }
-                
+
             }
         }
 
         public override UserControl ObterListagem()
         {
-            tabelaTemas ??= new TabelaTemaControl();
+            if (tabelaTemas == null)
+            {
+                tabelaTemas = new TabelaTemaControl();
+                tabelaTemas.onEnviarId += MostrarDetalhes;
+            }
 
             AtualizarListagem();
 
