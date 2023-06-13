@@ -37,7 +37,33 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public override void Editar()
         {
-            throw new NotImplementedException();
+            int id = tabelaAluguel!.BuscarIdSelecionado();
+
+            Aluguel aluguel = repositorioAluguel.ObterPorId(id);
+
+            if (aluguel == null) return;
+
+            List<Tema> temas = repositorioTema.BuscarTodos();
+
+            List<Cliente> clientes = repositorioCliente.BuscarTodos();
+
+            TelaAluguelForm telaAluguel = new TelaAluguelForm(clientes, temas)
+            {
+                Text = "Editar Aluguel"
+            };
+
+            telaAluguel.Aluguel = aluguel;
+
+            DialogResult result = telaAluguel.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                Aluguel novoAluguel = telaAluguel.Aluguel;
+
+                repositorioAluguel.Editar(novoAluguel);
+
+                AtualizarListagem();
+            }
         }
 
         public override void Excluir()

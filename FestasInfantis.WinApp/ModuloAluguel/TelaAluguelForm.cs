@@ -10,21 +10,25 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         private Aluguel aluguel = null!;
 
+        List<Cliente> Clientes;
+        List<Tema> Temas;
+
         public Aluguel Aluguel
         {
             get => aluguel;
+
             set
             {
-
-
-
-
+                PreencherCamposEditar(value, Clientes, Temas);
             }
         }
 
         public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
+
+            this.Clientes = clientes;
+            this.Temas = temas;
 
             clientes.ForEach(cliente => { txtCliente.Items.Add(cliente); });
             temas.ForEach(tema => { txtTema.Items.Add(tema); });
@@ -33,12 +37,12 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             var descontos = Enum.GetValues<PorcentagemDesconto>().Select(valor => new { x = valor.ToDescription(), value = valor }).ToList();
             var entradas = Enum.GetValues<PorcentagemEntrada>().Select(valor => new { x = valor.ToDescription(), value = valor }).ToList();
 
-            txtPagemento.DataSource = pgtos;
+            txtPagamento.DataSource = pgtos;
             txtDesconto.DataSource = descontos;
             txtEntrada.DataSource = entradas;
 
-            txtPagemento.DisplayMember = "x";
-            txtPagemento.ValueMember = "value";
+            txtPagamento.DisplayMember = "x";
+            txtPagamento.ValueMember = "value";
 
             txtDesconto.DisplayMember = "x";
             txtDesconto.ValueMember = "value";
@@ -46,6 +50,66 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             txtEntrada.DisplayMember = "x";
             txtEntrada.ValueMember = "value";
 
+        }
+
+        private void PreencherCamposEditar(Aluguel aluguel, List<Cliente> clientes, List<Tema> temas)
+        {
+            var temaSelecionado = temas.FirstOrDefault(i => i.Equals(aluguel.Tema));
+            var clienteSelecionado = clientes.FirstOrDefault(i => i.Equals(aluguel.Cliente));
+
+            txtData.Text = aluguel.DataFesta.ToString();
+            txtPreco.Text = aluguel.ValorTotal.ToString();
+            txtEndereco.Text = aluguel.Endereco;
+            txtId.Text = aluguel.Id.ToString();
+
+            txtCliente.Enabled = false;
+
+            foreach (var item in txtCliente.Items)
+            {
+                if (item == clienteSelecionado)
+                    txtCliente.SelectedItem = item;
+            }
+
+            foreach (var item in txtTema.Items)
+            {
+                if (item == temaSelecionado)
+                    txtTema.SelectedItem = item;
+            }
+
+            foreach (var item in txtPagamento.Items)
+            {
+                var pgto = new { x = aluguel.FormaPagamento.ToDescription(), value = aluguel.FormaPagamento };
+
+                if (pgto.Equals(item))
+                {
+                    txtPagamento.SelectedItem = pgto;
+                    break;
+                }
+            }
+
+            foreach (var item in txtDesconto.Items)
+            {
+                var desc = new { x = aluguel.Desconto.ToDescription(), value = aluguel.Desconto };
+
+                if (desc.Equals(item))
+                {
+                    txtDesconto.SelectedItem = desc;
+                    break;
+                }
+            }
+
+            foreach (var item in txtEntrada.Items)
+            {
+                var entrad = new { x = aluguel.PorcentagemDeEntrada.ToDescription(), value = aluguel.PorcentagemDeEntrada };
+
+                if (entrad.Equals(item))
+                {
+                    txtEntrada.SelectedItem = entrad;
+                    break;
+                }
+            }
+
+            
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -58,7 +122,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             PorcentagemDesconto desconto = (PorcentagemDesconto)txtDesconto.SelectedValue;
 
-            FormaDePagamento pagamento = (FormaDePagamento)txtPagemento.SelectedValue;
+            FormaDePagamento pagamento = (FormaDePagamento)txtPagamento.SelectedValue;
 
             string endereco = txtEndereco.Text;
 
@@ -67,6 +131,9 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             aluguel = new Aluguel(tema, cliente, entrada, desconto, endereco, dataFesta, pagamento);
 
             string[] erros = aluguel.Validar();
+
+            if (txtId.Text != "")
+                aluguel.Id = Convert.ToInt32(txtId.Text);
 
             if (erros.Any())
             {

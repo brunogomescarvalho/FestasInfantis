@@ -39,7 +39,7 @@
             labelEndereco = new Label();
             txtEndereco = new TextBox();
             labelFormapgto = new Label();
-            txtPagemento = new ComboBox();
+            txtPagamento = new ComboBox();
             labelTema = new Label();
             txtTema = new ComboBox();
             groupBoxItens = new GroupBox();
@@ -146,13 +146,13 @@
             labelFormapgto.TabIndex = 10;
             labelFormapgto.Text = "Pagamento:";
             // 
-            // txtPagemento
+            // txtPagamento
             // 
-            txtPagemento.FormattingEnabled = true;
-            txtPagemento.Location = new Point(111, 271);
-            txtPagemento.Name = "txtPagemento";
-            txtPagemento.Size = new Size(297, 28);
-            txtPagemento.TabIndex = 11;
+            txtPagamento.FormattingEnabled = true;
+            txtPagamento.Location = new Point(111, 271);
+            txtPagamento.Name = "txtPagamento";
+            txtPagamento.Size = new Size(297, 28);
+            txtPagamento.TabIndex = 11;
             // 
             // labelTema
             // 
@@ -260,7 +260,7 @@
             Controls.Add(groupBoxItens);
             Controls.Add(txtTema);
             Controls.Add(labelTema);
-            Controls.Add(txtPagemento);
+            Controls.Add(txtPagamento);
             Controls.Add(labelFormapgto);
             Controls.Add(txtEndereco);
             Controls.Add(labelEndereco);
@@ -292,7 +292,7 @@
         private Label labelEndereco;
         private TextBox txtEndereco;
         private Label labelFormapgto;
-        private ComboBox txtPagemento;
+        private ComboBox txtPagamento;
         private Label labelTema;
         private ComboBox txtTema;
         private GroupBox groupBoxItens;
