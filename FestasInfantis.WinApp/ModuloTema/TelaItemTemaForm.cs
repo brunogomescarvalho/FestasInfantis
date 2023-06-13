@@ -23,15 +23,11 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             listBoxItensTema.Items.Clear();
 
-            List<ItemTema> itemTemas;
-
             if(tema.Itens != null)
             {
-                itemTemas =listBoxItensTema.Items.Cast<ItemTema>().ToList();
-
-                foreach (ItemTema tema in itemTemas)
+                foreach (ItemTema item in tema.Itens)
                 {
-                    listBoxItensTema.Items.Add(tema);
+                    listBoxItensTema.Items.Add(item);
                 }
             }
         }

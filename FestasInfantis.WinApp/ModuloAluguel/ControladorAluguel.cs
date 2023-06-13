@@ -42,7 +42,20 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         public override void Excluir()
         {
-            throw new NotImplementedException();
+            int id = tabelaAluguel!.BuscarIdSelecionado();
+
+            Aluguel aluguel = repositorioAluguel.ObterPorId(id);
+
+            if (aluguel == null) return;
+
+            DialogResult opcao = MessageBox.Show($"Confirma excluír o aluguel {aluguel.Id} de {aluguel.Cliente.Nome} ?", "Excluír Aluguel",MessageBoxButtons.OKCancel,MessageBoxIcon.Question);
+
+            if(opcao == DialogResult.OK)
+            {
+                repositorioAluguel.Excluir(aluguel.Id);
+
+                AtualizarListagem();
+            }
         }
 
         public override void Inserir()

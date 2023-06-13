@@ -19,7 +19,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             gridTema.ConfigurarGridZebrado();
 
-            gridTema.MouseDoubleClick += GridTema_ObterDetalhes!;
+            gridTema.CellDoubleClick += GridTema_ObterDetalhes!;
         }
 
         public void AtualizarLista(List<Tema> temas)
@@ -66,7 +66,7 @@ namespace FestasInfantis.WinApp.ModuloTema
             gridTema.Columns.AddRange(columns);
         }
 
-        private void GridTema_ObterDetalhes(object sender, MouseEventArgs e)
+        private void GridTema_ObterDetalhes(object sender, EventArgs e)
         {
             int id =(int)gridTema.SelectedRows[0].Cells[0].Value;
 
