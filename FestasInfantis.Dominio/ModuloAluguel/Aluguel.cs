@@ -29,10 +29,9 @@ namespace FestasInfantis.Dominio.ModuloAluguel
 
         public bool EstaEmAberto { get { return DataFesta > DateTime.Now; } }
 
-        public Aluguel()
-        {
-            
-        }
+        public Aluguel() { }
+        
+                
         public Aluguel(
             Tema tema,
             Cliente cliente,
@@ -87,7 +86,11 @@ namespace FestasInfantis.Dominio.ModuloAluguel
             this.Desconto = entidade.Desconto;
             this.Endereco = entidade.Endereco;
             this.DataFesta = entidade.DataFesta;
+            this.ValorTotal = entidade.ValorTotal;
             this.FormaPagamento = entidade.FormaPagamento;
+            this.Debito = entidade.Debito;
+            this.ValorEntrada = entidade.ValorEntrada;
+           
         }
 
         public override string[] Validar()
