@@ -1,5 +1,4 @@
-﻿using FestasInfantis.Dominio.ModuloCliente;
-using FestasInfantis.Dominio.ModuloTema;
+﻿using FestasInfantis.Dominio.ModuloTema;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -9,7 +8,8 @@ namespace FestasInfantis.WinApp.ModuloTema
         {
             InitializeComponent();
         }
-        private Tema tema;
+
+        private Tema tema = null!;
 
         public Tema Tema
         {
@@ -17,18 +17,20 @@ namespace FestasInfantis.WinApp.ModuloTema
             set
             {
                 txtId.Text = value.Id.ToString();
+
                 txtTema.Text = value.Nome;
+ 
             }
         }
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             string nomeTema = txtTema.Text;
+
             tema = new Tema(nomeTema);
 
             if (txtId.Text != "")
             {
-                int id = Convert.ToInt32(txtId.Text);
-                tema.Id = id;
+                tema.Id = Convert.ToInt32(txtId.Text);              
             }
 
             string[] erros = tema.Validar();

@@ -29,7 +29,10 @@ namespace FestasInfantis.Dominio.ModuloAluguel
 
         public bool EstaEmAberto { get { return DataFesta > DateTime.Now; } }
 
-
+        public Aluguel()
+        {
+            
+        }
         public Aluguel(
             Tema tema,
             Cliente cliente,
@@ -46,7 +49,7 @@ namespace FestasInfantis.Dominio.ModuloAluguel
             this.DataPedido = DateTime.Now;
             this.DataFesta = dataFesta;
             this.FormaPagamento = formaPagamento;
-            this.ValorTotal = tema.Total;
+            this.ValorTotal = tema.ValorTotal;
             this.PorcentagemDeEntrada = porcentagem;
             this.Desconto = valorDesconto;
             this.ValorEntrada = CalcularValorEntrada(this.ValorTotal, PorcentagemDeEntrada, this.Desconto);

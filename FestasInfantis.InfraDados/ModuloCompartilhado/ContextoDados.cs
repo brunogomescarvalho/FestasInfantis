@@ -1,4 +1,5 @@
-﻿using FestasInfantis.Dominio.ModuloCliente;
+﻿using FestasInfantis.Dominio.ModuloAluguel;
+using FestasInfantis.Dominio.ModuloCliente;
 using FestasInfantis.Dominio.ModuloTema;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -11,12 +12,14 @@ namespace FestasInfantis.InfraDados.ModuloCompartilhado
 
         public List<Cliente> Clientes { get; set; }
         public List<Tema> Temas { get; set; }
+        public List<Aluguel> Alugueis { get; set; }
         
         
         public ContextoDados()
         {
             Clientes = new List<Cliente>();
             Temas = new List<Tema>();
+            Alugueis = new List<Aluguel>();
         }
 
 
@@ -40,6 +43,7 @@ namespace FestasInfantis.InfraDados.ModuloCompartilhado
 
                 Clientes = contexto.Clientes;
                 Temas = contexto.Temas;
+                Alugueis = contexto.Alugueis;
             }
         }
 

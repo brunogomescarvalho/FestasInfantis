@@ -73,6 +73,16 @@ namespace FestasInfantis.WinApp.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap celebration_FILL0_wght200_GRAD0_opsz40 {
+            get {
+                object obj = ResourceManager.GetObject("celebration_FILL0_wght200_GRAD0_opsz40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_FILL0_wght200_GRAD0_opsz40 {
             get {
                 object obj = ResourceManager.GetObject("delete_FILL0_wght200_GRAD0_opsz40", resourceCulture);

@@ -22,7 +22,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             temas.ForEach(i =>
             {
-                gridTema.Rows.Add(i.Id, i.Nome, String.Join(",", i.Itens), $"RS{i.Total}");
+                gridTema.Rows.Add(i.Id, i.Nome, i.Itens == null || i.Itens.Count == 0 ? 0 : i.Itens.Count, $"RS {i.ValorTotal}");
             });
         }
 
@@ -50,7 +50,7 @@ namespace FestasInfantis.WinApp.ModuloTema
                 { Name = "nome", HeaderText = "Tema"},
 
                 new DataGridViewTextBoxColumn()
-                {Name = "itens", HeaderText = "Itens" },
+                {Name = "totalItens", HeaderText = "Qtd Itens" },
 
                 new DataGridViewTextBoxColumn()
                 {Name = "valorTotal", HeaderText = "Valor Total" },

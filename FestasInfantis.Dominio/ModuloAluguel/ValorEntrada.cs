@@ -1,11 +1,13 @@
-﻿namespace FestasInfantis.Dominio.ModuloAluguel
+﻿using System.ComponentModel;
+
+namespace FestasInfantis.Dominio.ModuloAluguel
 {
     public enum PorcentagemEntrada
     {
-        Quarenta_PorCento = 40,
-        Cinquenta_PorCento = 50,
-        Sessenta_PorCento = 60,
-        Cem_PorCento = 100
+        [Description("40%")] _40porcento = 40,
+        [Description("50%")]_50porcento = 50,
+        [Description("60%")]_60porcento = 60,
+        [Description("100%")]_100porcento = 100
     }
 
 }

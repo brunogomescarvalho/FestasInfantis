@@ -32,6 +32,7 @@
             cadastrosToolStripMenuItem = new ToolStripMenuItem();
             clientesMenu = new ToolStripMenuItem();
             TematicasToolStripMenuItem = new ToolStripMenuItem();
+            alugueisToolStripMenuItem = new ToolStripMenuItem();
             toolStrip1 = new ToolStrip();
             btnAdicionar = new ToolStripButton();
             btnEditar = new ToolStripButton();
@@ -61,12 +62,12 @@
             // 
             // cadastrosToolStripMenuItem
             // 
-            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenu, TematicasToolStripMenuItem });
+            cadastrosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { clientesMenu, TematicasToolStripMenuItem, alugueisToolStripMenuItem });
             cadastrosToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cadastrosToolStripMenuItem.Image = Properties.Resources.menu_FILL0_wght200_GRAD0_opsz40;
             cadastrosToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             cadastrosToolStripMenuItem.Name = "cadastrosToolStripMenuItem";
-            cadastrosToolStripMenuItem.Size = new Size(122, 44);
+            cadastrosToolStripMenuItem.Size = new Size(139, 44);
             cadastrosToolStripMenuItem.Text = "Cadastros";
             // 
             // clientesMenu
@@ -74,7 +75,7 @@
             clientesMenu.Image = Properties.Resources.person_add_FILL0_wght200_GRAD0_opsz40;
             clientesMenu.ImageScaling = ToolStripItemImageScaling.None;
             clientesMenu.Name = "clientesMenu";
-            clientesMenu.Size = new Size(150, 46);
+            clientesMenu.Size = new Size(244, 46);
             clientesMenu.Text = "Clientes";
             clientesMenu.Click += ClientesMenu_Click;
             // 
@@ -83,9 +84,18 @@
             TematicasToolStripMenuItem.Image = Properties.Resources.domino_mask_FILL0_wght200_GRAD0_opsz40;
             TematicasToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             TematicasToolStripMenuItem.Name = "TematicasToolStripMenuItem";
-            TematicasToolStripMenuItem.Size = new Size(150, 46);
+            TematicasToolStripMenuItem.Size = new Size(244, 46);
             TematicasToolStripMenuItem.Text = "Temas";
             TematicasToolStripMenuItem.Click += TematicasToolStripMenuItem_Click;
+            // 
+            // alugueisToolStripMenuItem
+            // 
+            alugueisToolStripMenuItem.Image = Properties.Resources.celebration_FILL0_wght200_GRAD0_opsz40;
+            alugueisToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
+            alugueisToolStripMenuItem.Name = "alugueisToolStripMenuItem";
+            alugueisToolStripMenuItem.Size = new Size(244, 46);
+            alugueisToolStripMenuItem.Text = "Alugueis";
+            alugueisToolStripMenuItem.Click += AlugueisToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
@@ -144,7 +154,7 @@
             btnItemTema.ImageTransparentColor = Color.Magenta;
             btnItemTema.Name = "btnItemTema";
             btnItemTema.Size = new Size(44, 44);
-            btnItemTema.Click += btnItemTema_Click;
+            btnItemTema.Click += BtnItemTema_Click;
             // 
             // toolStripSeparator1
             // 
@@ -155,24 +165,24 @@
             // 
             labelMenu.ImageAlign = ContentAlignment.TopCenter;
             labelMenu.Name = "labelMenu";
-            labelMenu.Size = new Size(80, 44);
+            labelMenu.Size = new Size(102, 44);
             labelMenu.Text = "Tipo Cadastro";
             // 
             // statusStrip1
             // 
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { labelRodape });
-            statusStrip1.Location = new Point(0, 496);
+            statusStrip1.Location = new Point(0, 492);
             statusStrip1.Name = "statusStrip1";
             statusStrip1.Padding = new Padding(1, 0, 16, 0);
-            statusStrip1.Size = new Size(900, 22);
+            statusStrip1.Size = new Size(900, 26);
             statusStrip1.TabIndex = 3;
             statusStrip1.Text = "statusStrip1";
             // 
             // labelRodape
             // 
             labelRodape.Name = "labelRodape";
-            labelRodape.Size = new Size(70, 17);
+            labelRodape.Size = new Size(88, 20);
             labelRodape.Text = "Bem-Vindo!";
             // 
             // panelTelaPrincipal
@@ -180,12 +190,12 @@
             panelTelaPrincipal.Dock = DockStyle.Fill;
             panelTelaPrincipal.Location = new Point(0, 95);
             panelTelaPrincipal.Name = "panelTelaPrincipal";
-            panelTelaPrincipal.Size = new Size(900, 401);
+            panelTelaPrincipal.Size = new Size(900, 397);
             panelTelaPrincipal.TabIndex = 4;
             // 
             // TelaPrincipalForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 518);
             Controls.Add(panelTelaPrincipal);
@@ -225,5 +235,6 @@
         private ToolStripMenuItem TematicasToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripButton btnItemTema;
+        private ToolStripMenuItem alugueisToolStripMenuItem;
     }
 }

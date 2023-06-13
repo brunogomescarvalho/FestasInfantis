@@ -1,94 +1,78 @@
 ﻿using FestasInfantis.Dominio.ModuloTema;
-using System.Linq;
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
     public partial class TelaItemTemaForm : Form
     {
-
-        List<ItemTema> listaItemTema = new List<ItemTema>();
-        List<ItemTema> listaReserva = new List<ItemTema>();
+        Tema tema = null!;
 
         public TelaItemTemaForm(Tema temaSelecionado)
         {
+            tema = temaSelecionado;
+
             InitializeComponent();
 
-            CarregarTemas(temaSelecionado);
-
-            CarregarListaItens(temaSelecionado);
-
+            CarregarTemas();
         }
 
-        private void CarregarTemas(Tema temaSelecionado)
+        private void CarregarTemas()
         {
-            txtTema.Text = temaSelecionado.Nome;
+            txtId.Text = tema.Id.ToString();
+
+            txtTema.Text = tema.Nome;
 
             listBoxItensTema.Items.Clear();
 
-            List<ItemTema> itemTemas = temaSelecionado.Itens.ToList();
+            List<ItemTema> itemTemas;
 
-            foreach (ItemTema itemTema in itemTemas)
+            if(tema.Itens != null)
             {
-                listBoxItensTema.Items.Add($"{itemTema.nome} | {itemTema.valor}");
+                itemTemas =listBoxItensTema.Items.Cast<ItemTema>().ToList();
+
+                foreach (ItemTema tema in itemTemas)
+                {
+                    listBoxItensTema.Items.Add(tema);
+                }
             }
         }
 
-        public List<ItemTema> BuscarItem()
-        {
-            return listaItemTema;
-        }
-
-        private void btnInserir_Click(object sender, EventArgs e)
+        private void BtnInserir_Click(object sender, EventArgs e)
         {
             string itemDescrito = txtNomeItem.Text;
 
             decimal valor = Convert.ToDecimal(numericValor.Value);
 
-            if (String.IsNullOrEmpty(itemDescrito) && String.IsNullOrWhiteSpace(itemDescrito))
+            if (string.IsNullOrEmpty(itemDescrito) && string.IsNullOrWhiteSpace(itemDescrito))
             {
                 MessageBox.Show("Nome inválido", "Nome inválido", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                ItemTema itemTema = new ItemTema(valor, itemDescrito);
+                var itemTema = new ItemTema(valor, itemDescrito);
 
-                listaItemTema.Add(itemTema);
-                listaReserva.Add(itemTema);
+                tema.Itens ??= new();
 
-                listBoxItensTema.Items.Add($"{itemTema.nome} | {itemTema.valor}");
+                bool cadastrou = tema.AdicionarItemNoTema(itemTema);
 
-                txtNomeItem.Clear();
-                numericValor.Value = 0;
-            }
-
-        }
-
-        public void CarregarListaItens(Tema temaSelecionado)
-        {
-            foreach (ItemTema item in temaSelecionado.Itens)
-            {
-                listaItemTema.Add(item);
-                listaReserva.Add(item);
-            }
-        }
-
-        private void btnExcluir_Click(object sender, EventArgs e)
-        {
-
-            foreach (ItemTema item in listaReserva)
-            {
-                if (listBoxItensTema.SelectedItem.ToString().Contains(item.nome))
+                if (cadastrou == false)
                 {
-                    listaItemTema.Remove(item);
+                    MessageBox.Show("Item com um nome igual já cadastrado", "Item já cadastrado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult = DialogResult.None;
+                }
+                else
+                {
+                    listBoxItensTema.Items.Add(itemTema);
                 }
             }
+        }
 
-            listBoxItensTema.Items.Clear();
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            ItemTema item = (ItemTema)listBoxItensTema.SelectedItem;
 
-            foreach (ItemTema item in listaItemTema)
-            {
-                listBoxItensTema.Items.Add($"{item.nome} | {item.valor}");
-            }
+            tema.Itens.Remove(item);
+
+            listBoxItensTema.Items.Remove(item);         
         }
     }
 }

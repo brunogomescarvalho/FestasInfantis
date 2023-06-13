@@ -1,12 +1,5 @@
-﻿using FestasInfantis.Dominio.ModuloCliente;
-using FestasInfantis.Dominio.ModuloTema;
-using FestasInfantis.InfraDados.ModuloCliente;
-using FestasInfantis.WinApp.ModuloCliente;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FestasInfantis.Dominio.ModuloTema;
+
 
 namespace FestasInfantis.WinApp.ModuloTema
 {
@@ -47,7 +40,7 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             Configuracao ??= new Configuracao("Inserir Tema", "Editar Tema", "Excluir Tema");
             
-            Configuracao.BtnAdicionarEnabled = true;
+            Configuracao.BtnItemTemaEnabled = true;
 
             Configuracao.ToolTipAdicionarItem = "Adicionar Item ao Tema";
 
@@ -142,6 +135,7 @@ namespace FestasInfantis.WinApp.ModuloTema
         public override void AdicionarItemTema()
         {
             int id = tabelaTemas!.BuscarIdSelecionado();
+
             if (id == -1) return;
 
             Tema temaSelecionado = repositorioTema.ObterPorId(id);
@@ -152,17 +146,6 @@ namespace FestasInfantis.WinApp.ModuloTema
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                temaSelecionado.Itens.Clear();
-
-                List<ItemTema> itens = telaItemForm.BuscarItem();
-
-                foreach (ItemTema item in itens)
-                {
-                    temaSelecionado.AdicionarItemNoTema(item);
-                }
-
-                temaSelecionado.CalcularValorTotal();
-
                 repositorioTema.Editar(temaSelecionado);
 
                 AtualizarListagem();

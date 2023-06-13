@@ -86,7 +86,7 @@
             btnExcluir.TabIndex = 19;
             btnExcluir.Text = "Excluir";
             btnExcluir.UseVisualStyleBackColor = true;
-            btnExcluir.Click += btnExcluir_Click;
+            btnExcluir.Click += BtnExcluir_Click;
             // 
             // btnInserir
             // 
@@ -96,7 +96,7 @@
             btnInserir.TabIndex = 18;
             btnInserir.Text = "Inserir";
             btnInserir.UseVisualStyleBackColor = true;
-            btnInserir.Click += btnInserir_Click;
+            btnInserir.Click += BtnInserir_Click;
             // 
             // listBoxItensTema
             // 

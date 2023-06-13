@@ -1,8 +1,11 @@
+using FestasInfantis.Dominio.ModuloAluguel;
 using FestasInfantis.Dominio.ModuloCliente;
 using FestasInfantis.Dominio.ModuloTema;
+using FestasInfantis.InfraDados.ModuloAluguel;
 using FestasInfantis.InfraDados.ModuloCliente;
 using FestasInfantis.InfraDados.ModuloCompartilhado;
 using FestasInfantis.InfraDados.ModuloTema;
+using FestasInfantis.WinApp.ModuloAluguel;
 using FestasInfantis.WinApp.ModuloCliente;
 using FestasInfantis.WinApp.ModuloCompartilado;
 using FestasInfantis.WinApp.ModuloTema;
@@ -18,6 +21,8 @@ namespace FestasInfantis.WinApp
         private readonly IRepositorioCliente repositorioCliente = new RepositorioCliente(contexto);
 
         private readonly IRepositorioTema repositorioTema = new RepositorioTema(contexto);
+
+        private readonly IRepositorioAluguel repositorioAluguel = new RepositorioAluguel(contexto);
 
         public static TelaPrincipalForm? TelaPrincipal { get; private set; }
 
@@ -85,7 +90,7 @@ namespace FestasInfantis.WinApp
 
             btnExcluir.Enabled = controlador.Configuracao.BtnExcluirEnabled;
 
-            btnItemTema.Enabled = controlador.Configuracao.BtnAdicionarEnabled;
+            btnItemTema.Enabled = controlador.Configuracao.BtnItemTemaEnabled;
 
         }
 
@@ -112,9 +117,20 @@ namespace FestasInfantis.WinApp
             ConfigurarTabela(controlador);
         }
 
-        private void btnItemTema_Click(object sender, EventArgs e)
+        private void BtnItemTema_Click(object sender, EventArgs e)
         {
             controlador.AdicionarItemTema();
+        }
+
+        private void AlugueisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorAluguel(repositorioAluguel, repositorioCliente, repositorioTema);
+
+            ConfigurarBotoes(controlador);
+
+            ConfigurarToolTips(controlador);
+
+            ConfigurarTabela(controlador);
         }
     }
 }

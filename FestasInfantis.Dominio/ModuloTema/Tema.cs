@@ -5,22 +5,20 @@ namespace FestasInfantis.Dominio.ModuloTema
     {
         public string Nome { get; set; }
         public List<ItemTema> Itens { get; set; }
-        public decimal Total { get; set; }
+        public decimal ValorTotal { get => CalcularValorTotal(); }
 
         public Tema(string tema)
         {
             this.Nome = tema;
+
             this.Itens = new List<ItemTema>();
-            this.Total = 0;
+           
         }
-        public Tema()
-        {
-        }
+        public Tema() { }
+
         public override void Editar(Tema temaAtualizado)
         {
-            this.Nome = temaAtualizado.Nome;
-            this.Itens = temaAtualizado.Itens;
-            this.Total = temaAtualizado.Total;
+            this.Nome = temaAtualizado.Nome; 
         }
 
         public override string[] Validar()
@@ -32,20 +30,7 @@ namespace FestasInfantis.Dominio.ModuloTema
                 erros.Add("Por gentileza, informe o nome do tema!");
             }
 
-            foreach (ItemTema item in  Itens)
-            {
-                if(item.nome.Trim() == string.Empty)
-                {
-                    erros.Add("Por gentileza, informe o nome do item!");
-                }
-                if(item.valor < 0)
-                {
-                    erros.Add("Por gentileza, informe um valor positivo!");
-                }
-            }
-
             return erros.ToArray();
-
 
         }
         public override string ToString()
@@ -53,19 +38,23 @@ namespace FestasInfantis.Dominio.ModuloTema
             return $"{Nome}";
         }
 
-        public void AdicionarItemNoTema(ItemTema item)
+        public bool AdicionarItemNoTema(ItemTema item)
         {
+            bool jaCadastrado = Itens.Any(i => i.Nome.Equals(item.Nome));
+
+            if (jaCadastrado)
+            {
+                return false;
+            }
+               
             Itens.Add(item);
+
+            return true;
         }
 
-        public void CalcularValorTotal()
+        public decimal CalcularValorTotal()
         {
-            this.Total = 0;
-
-            foreach (ItemTema item in Itens)
-            {
-                this.Total += item.valor;
-            } 
+            return Itens == null || Itens.Count == 0? 0 : Itens.Sum(i => i.Valor);
         }
     }
 }

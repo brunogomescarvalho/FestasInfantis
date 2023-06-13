@@ -16,7 +16,7 @@ namespace FestasInfantis.WinApp.ModuloCompartilado
         public bool BtnAdicionarEnabled { get; set; }
         public bool BtnEditarEnabled { get; set; }
         public bool BtnExcluirEnabled { get; set; }
-        public bool BtnItemTemaEnabled { get; set; } = false;
+        public bool BtnItemTemaEnabled { get; set; } 
 
         #endregion
 
