@@ -31,6 +31,8 @@ namespace FestasInfantis.WinApp
             InitializeComponent();
 
             TelaPrincipal = this;
+
+            this.FormBorderStyle = FormBorderStyle.Fixed3D;
         }
 
         public void AlterarLabelMenu(string texto)

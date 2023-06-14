@@ -51,6 +51,7 @@
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = Color.BurlyWood;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { cadastrosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
@@ -75,7 +76,7 @@
             clientesMenu.Image = Properties.Resources.person_add_FILL0_wght200_GRAD0_opsz40;
             clientesMenu.ImageScaling = ToolStripItemImageScaling.None;
             clientesMenu.Name = "clientesMenu";
-            clientesMenu.Size = new Size(244, 46);
+            clientesMenu.Size = new Size(179, 46);
             clientesMenu.Text = "Clientes";
             clientesMenu.Click += ClientesMenu_Click;
             // 
@@ -84,7 +85,7 @@
             TematicasToolStripMenuItem.Image = Properties.Resources.domino_mask_FILL0_wght200_GRAD0_opsz40;
             TematicasToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             TematicasToolStripMenuItem.Name = "TematicasToolStripMenuItem";
-            TematicasToolStripMenuItem.Size = new Size(244, 46);
+            TematicasToolStripMenuItem.Size = new Size(179, 46);
             TematicasToolStripMenuItem.Text = "Temas";
             TematicasToolStripMenuItem.Click += TematicasToolStripMenuItem_Click;
             // 
@@ -93,12 +94,13 @@
             alugueisToolStripMenuItem.Image = Properties.Resources.celebration_FILL0_wght200_GRAD0_opsz40;
             alugueisToolStripMenuItem.ImageScaling = ToolStripItemImageScaling.None;
             alugueisToolStripMenuItem.Name = "alugueisToolStripMenuItem";
-            alugueisToolStripMenuItem.Size = new Size(244, 46);
+            alugueisToolStripMenuItem.Size = new Size(179, 46);
             alugueisToolStripMenuItem.Text = "Alugueis";
             alugueisToolStripMenuItem.Click += AlugueisToolStripMenuItem_Click;
             // 
             // toolStrip1
             // 
+            toolStrip1.BackColor = Color.AntiqueWhite;
             toolStrip1.ImageScalingSize = new Size(20, 20);
             toolStrip1.Items.AddRange(new ToolStripItem[] { btnAdicionar, btnEditar, btnExcluir, toolStripSeparator2, btnItemTema, toolStripSeparator1, labelMenu });
             toolStrip1.Location = new Point(0, 48);
@@ -170,6 +172,7 @@
             // 
             // statusStrip1
             // 
+            statusStrip1.BackColor = Color.AntiqueWhite;
             statusStrip1.ImageScalingSize = new Size(20, 20);
             statusStrip1.Items.AddRange(new ToolStripItem[] { labelRodape });
             statusStrip1.Location = new Point(0, 492);
@@ -197,12 +200,14 @@
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Menu;
             ClientSize = new Size(900, 518);
             Controls.Add(panelTelaPrincipal);
             Controls.Add(statusStrip1);
             Controls.Add(toolStrip1);
             Controls.Add(menuStrip1);
             Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             MainMenuStrip = menuStrip1;
             Name = "TelaPrincipalForm";
             ShowIcon = false;

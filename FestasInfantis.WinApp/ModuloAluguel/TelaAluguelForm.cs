@@ -8,10 +8,12 @@ namespace FestasInfantis.WinApp.ModuloAluguel
     public partial class TelaAluguelForm : Form
     {
 
-        private Aluguel aluguel = null!;
+        Aluguel aluguel = null!;
+        Tema tema = null!;
 
-        List<Cliente> Clientes;
-        List<Tema> Temas;
+        List<Cliente> Clientes = null! ;
+        List<Tema> Temas = null!;
+        List<ItemTema> ItensAdicionais = null!;
 
         public Aluguel Aluguel
         {
@@ -26,6 +28,8 @@ namespace FestasInfantis.WinApp.ModuloAluguel
         public TelaAluguelForm(List<Cliente> clientes, List<Tema> temas)
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
 
             this.Clientes = clientes;
             this.Temas = temas;
@@ -54,6 +58,9 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
         private void PreencherCamposEditar(Aluguel aluguel, List<Cliente> clientes, List<Tema> temas)
         {
+            ItensAdicionais = aluguel.Adicionais;
+            tema = aluguel.Tema;
+
             var temaSelecionado = temas.FirstOrDefault(i => i.Equals(aluguel.Tema));
             var clienteSelecionado = clientes.FirstOrDefault(i => i.Equals(aluguel.Cliente));
 
@@ -109,7 +116,18 @@ namespace FestasInfantis.WinApp.ModuloAluguel
                 }
             }
 
-            
+            if(aluguel.Adicionais!=null)
+            {
+                foreach (var item in aluguel.Adicionais)
+                {
+                   
+                    listAdicionais.Items.Add(item);
+                }
+
+                txtPreco.Text = aluguel.ValorTotal.ToString();
+            }
+
+
         }
 
         private void BtnSalvar_Click(object sender, EventArgs e)
@@ -128,7 +146,7 @@ namespace FestasInfantis.WinApp.ModuloAluguel
 
             Tema tema = (Tema)txtTema.SelectedItem;
 
-            aluguel = new Aluguel(tema, cliente, entrada, desconto, endereco, dataFesta, pagamento);
+            aluguel = new Aluguel(tema, cliente, entrada, desconto, endereco, dataFesta, pagamento, ItensAdicionais);
 
             string[] erros = aluguel.Validar();
 
@@ -152,6 +170,49 @@ namespace FestasInfantis.WinApp.ModuloAluguel
             tema.Itens.ForEach(i => listItens.Items.Add(i));
 
             txtPreco.Text = tema.ValorTotal.ToString();
+        }
+
+
+        private void BtnAddItensOpcionais_Click(object sender, EventArgs e)
+        {
+
+            tema = (Tema)txtTema.SelectedItem;
+
+            var telaAdicionais = new TelaItensOpcionaisForm(Temas, tema)
+            {
+                Text = "Adicionar itens opcionais"
+            };
+
+            if (tema == null) return;
+
+            ItensAdicionais ??= new();
+          
+            DialogResult result = telaAdicionais.ShowDialog();
+            {
+                if (result == DialogResult.OK)
+                {
+                    ItensAdicionais.AddRange( telaAdicionais.itensOpcionais);
+                    CarregarItens();
+                }
+            }
+        }
+
+        private void CarregarItens()
+        {
+            listAdicionais.Items.Clear(); 
+            ItensAdicionais.ForEach(i => listAdicionais.Items.Add(i));
+            
+            decimal preco = 0;
+            preco = Convert.ToDecimal(tema.ValorTotal);
+            preco += ItensAdicionais.Sum(i => i.Valor);
+            txtPreco.Text = preco.ToString();
+        }
+
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            ItensAdicionais.Remove((ItemTema)listAdicionais.SelectedItem);
+            listAdicionais.Items.Clear();
+            CarregarItens();
         }
     }
 }

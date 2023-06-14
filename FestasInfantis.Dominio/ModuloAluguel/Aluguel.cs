@@ -29,6 +29,8 @@ namespace FestasInfantis.Dominio.ModuloAluguel
 
         public bool EstaEmAberto { get { return DataFesta > DateTime.Now; } }
 
+        public List<ItemTema> Adicionais { get; set; }
+
         public Aluguel() { }
         
                 
@@ -39,21 +41,37 @@ namespace FestasInfantis.Dominio.ModuloAluguel
             PorcentagemDesconto valorDesconto,
             string endereco,
             DateTime dataFesta,
-            FormaDePagamento formaPagamento)
+            FormaDePagamento formaPagamento,
+            List<ItemTema>itensOpcionais)
         {
 
             this.Cliente = cliente;
             this.Tema = tema;
+            this.Adicionais = itensOpcionais;
             this.Endereco = endereco;
             this.DataPedido = DateTime.Now;
             this.DataFesta = dataFesta;
             this.FormaPagamento = formaPagamento;
-            this.ValorTotal = tema.ValorTotal;
+            this.ValorTotal = CalcularValorTotal();
             this.PorcentagemDeEntrada = porcentagem;
             this.Desconto = valorDesconto;
             this.ValorEntrada = CalcularValorEntrada(ValorTotal, PorcentagemDeEntrada, Desconto);
             this.Debito = CalcularDebito(PorcentagemDeEntrada, ValorTotal, ValorEntrada, Desconto );
         }
+
+        public decimal CalcularValorTotal()
+        {
+           decimal valorTema =  Tema.ValorTotal;
+
+            if(Adicionais == null)
+            {
+                return valorTema;
+            }
+
+            return valorTema + Adicionais.Sum(i => i.Valor);
+            
+        }
+
 
         private decimal CalcularDebito(PorcentagemEntrada porcentagemDeEntrada, decimal valorTotal, decimal valorEntrada, PorcentagemDesconto desconto)
         {
@@ -90,7 +108,17 @@ namespace FestasInfantis.Dominio.ModuloAluguel
             this.FormaPagamento = entidade.FormaPagamento;
             this.Debito = entidade.Debito;
             this.ValorEntrada = entidade.ValorEntrada;
+            this.Adicionais = entidade.Adicionais;
            
+        }
+
+        public void AdicionarOpcionais(List<ItemTema>itens)
+        {
+           if(itens != null)
+            {
+                this.Tema.Itens.AddRange(itens);
+            }
+            
         }
 
         public override string[] Validar()

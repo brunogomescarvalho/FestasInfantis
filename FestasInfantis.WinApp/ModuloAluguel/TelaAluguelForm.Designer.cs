@@ -43,6 +43,11 @@
             labelTema = new Label();
             txtTema = new ComboBox();
             groupBoxItens = new GroupBox();
+            groupAdicionais = new GroupBox();
+            listAdicionais = new ListBox();
+            statusStrip1 = new StatusStrip();
+            btnAddItensOpcionais = new ToolStripDropDownButton();
+            btnExcluir = new ToolStripDropDownButton();
             listItens = new ListBox();
             btnSalvar = new Button();
             btnCancelar = new Button();
@@ -51,6 +56,8 @@
             txtId = new TextBox();
             txtPreco = new TextBox();
             groupBoxItens.SuspendLayout();
+            groupAdicionais.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // labelCliente
@@ -174,6 +181,8 @@
             // 
             // groupBoxItens
             // 
+            groupBoxItens.Controls.Add(groupAdicionais);
+            groupBoxItens.Controls.Add(statusStrip1);
             groupBoxItens.Controls.Add(listItens);
             groupBoxItens.Location = new Point(465, 22);
             groupBoxItens.Name = "groupBoxItens";
@@ -182,14 +191,65 @@
             groupBoxItens.TabStop = false;
             groupBoxItens.Text = "Itens do Tema";
             // 
+            // groupAdicionais
+            // 
+            groupAdicionais.Controls.Add(listAdicionais);
+            groupAdicionais.Dock = DockStyle.Bottom;
+            groupAdicionais.Location = new Point(3, 174);
+            groupAdicionais.Name = "groupAdicionais";
+            groupAdicionais.Size = new Size(341, 170);
+            groupAdicionais.TabIndex = 2;
+            groupAdicionais.TabStop = false;
+            groupAdicionais.Text = "Itens Adicionais";
+            // 
+            // listAdicionais
+            // 
+            listAdicionais.Dock = DockStyle.Fill;
+            listAdicionais.FormattingEnabled = true;
+            listAdicionais.ItemHeight = 20;
+            listAdicionais.Location = new Point(3, 23);
+            listAdicionais.Name = "listAdicionais";
+            listAdicionais.Size = new Size(335, 144);
+            listAdicionais.TabIndex = 0;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.ImageScalingSize = new Size(20, 20);
+            statusStrip1.Items.AddRange(new ToolStripItem[] { btnAddItensOpcionais, btnExcluir });
+            statusStrip1.Location = new Point(3, 344);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(341, 26);
+            statusStrip1.TabIndex = 1;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // btnAddItensOpcionais
+            // 
+            btnAddItensOpcionais.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnAddItensOpcionais.Image = Properties.Resources.add_circle_FILL0_wght200_GRAD0_opsz40;
+            btnAddItensOpcionais.ImageTransparentColor = Color.Magenta;
+            btnAddItensOpcionais.Name = "btnAddItensOpcionais";
+            btnAddItensOpcionais.Size = new Size(34, 24);
+            btnAddItensOpcionais.ToolTipText = "Adicionar Itens Opcionais";
+            btnAddItensOpcionais.Click += BtnAddItensOpcionais_Click;
+            // 
+            // btnExcluir
+            // 
+            btnExcluir.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            btnExcluir.Image = Properties.Resources.delete_FILL0_wght200_GRAD0_opsz40;
+            btnExcluir.ImageTransparentColor = Color.Magenta;
+            btnExcluir.Name = "btnExcluir";
+            btnExcluir.Size = new Size(34, 24);
+            btnExcluir.ToolTipText = "Excluir Item Opcional";
+            btnExcluir.Click += BtnExcluir_Click;
+            // 
             // listItens
             // 
-            listItens.Dock = DockStyle.Fill;
+            listItens.Dock = DockStyle.Top;
             listItens.FormattingEnabled = true;
             listItens.ItemHeight = 20;
             listItens.Location = new Point(3, 23);
             listItens.Name = "listItens";
-            listItens.Size = new Size(341, 347);
+            listItens.Size = new Size(341, 344);
             listItens.TabIndex = 0;
             // 
             // btnSalvar
@@ -275,6 +335,10 @@
             Name = "TelaAluguelForm";
             Text = "TelaAluguelForm";
             groupBoxItens.ResumeLayout(false);
+            groupBoxItens.PerformLayout();
+            groupAdicionais.ResumeLayout(false);
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -303,5 +367,10 @@
         private Label label_Id;
         private TextBox txtId;
         private TextBox txtPreco;
+        private StatusStrip statusStrip1;
+        private ToolStripDropDownButton btnAddItensOpcionais;
+        private GroupBox groupAdicionais;
+        private ListBox listAdicionais;
+        private ToolStripDropDownButton btnExcluir;
     }
 }

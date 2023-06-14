@@ -16,6 +16,7 @@ namespace FestasInfantis.Dominio.ModuloTema
         }
         public Tema() { }
 
+
         public override void Editar(Tema temaAtualizado)
         {
             this.Nome = temaAtualizado.Nome; 
@@ -55,6 +56,15 @@ namespace FestasInfantis.Dominio.ModuloTema
         public decimal CalcularValorTotal()
         {
             return Itens == null || Itens.Count == 0? 0 : Itens.Sum(i => i.Valor);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Tema tema &&
+                   Id == tema.Id &&
+                   Nome == tema.Nome &&
+                   EqualityComparer<List<ItemTema>>.Default.Equals(Itens, tema.Itens) &&
+                   ValorTotal == tema.ValorTotal;
         }
     }
 }
